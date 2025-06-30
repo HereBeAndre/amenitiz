@@ -45,11 +45,13 @@ export const Home = () => {
 
   return (
     <div className="home-container">
-      <h1>Chess Grandmasters</h1>
-      <TextInput
-        placeholder="Search player by username"
-        onChange={onInputChange}
-      />
+      <div className="home-header">
+        <h1>Chess Grandmasters</h1>
+        <TextInput
+          placeholder="Search player by username"
+          onChange={onInputChange}
+        />
+      </div>
       {render({
         loading,
         error,
