@@ -13,7 +13,7 @@ export const PlayerProfile = () => {
   if (!profile) return <p>Player profile not found.</p>;
 
   return (
-    <div className="container">
+    <div>
       <h1>{profile.name || profile.username}</h1>
       <ProfileAvatar avatar={profile.avatar} />
       <p>

@@ -1,0 +1,21 @@
+input[type="text"].text-input {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 15%;
+  box-sizing: border-box;
+}
+
+input[type="text"].text-input::placeholder {
+  color: #888;
+}
+
+input[type="text"].text-input:focus {
+  outline: none;
+  border-color: #8884ff;
+  box-shadow: 0 0 0 3px rgba(136, 132, 255, 0.2);
+}
