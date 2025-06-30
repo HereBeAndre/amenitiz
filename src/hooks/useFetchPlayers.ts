@@ -5,6 +5,8 @@ const PLAYERS_URL = "https://api.chess.com/pub/titled/GM";
 
 export const useFetchPlayers = () => {
   const [players, setPlayers] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -16,12 +18,18 @@ export const useFetchPlayers = () => {
         const data: PlayersData = await response.json();
         setPlayers(data.players);
       } catch (error) {
-        console.error("Failed to fetch players:", error);
+        setError(
+          error instanceof Error
+            ? error.message
+            : "An error occurred while fetching players"
+        );
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchPlayers();
   }, []);
 
-  return players;
+  return { players, loading, error };
 };

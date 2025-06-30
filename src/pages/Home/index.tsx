@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
 import { useFetchPlayers } from "../../hooks/useFetchPlayers";
+import { LinkComponent } from "../../shared/LinkComponent";
 
 import "./index.css";
 
 export const Home = () => {
-  const players = useFetchPlayers();
+  const { players, loading, error } = useFetchPlayers();
+
+  if (loading) return <p>Loading...</p>;
+
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="container">
@@ -12,7 +16,7 @@ export const Home = () => {
       <ul className="player-list">
         {players.map((username) => (
           <li key={username}>
-            <Link to={`/player/${username}`}>{username}</Link>
+            <LinkComponent to={`/player/${username}`}>{username}</LinkComponent>
           </li>
         ))}
       </ul>
