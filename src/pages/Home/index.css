@@ -1,0 +1,12 @@
+.container {
+  padding: 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.player-list {
+  /* display: flex;
+  flex-wrap: wrap; */
+  list-style: none;
+  padding: 0;
+}
