@@ -11,7 +11,7 @@ export const Home = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="container">
+    <div className="home-container">
       <h1>Chess Grandmasters</h1>
       <ul className="player-list">
         {players.map((username) => (
