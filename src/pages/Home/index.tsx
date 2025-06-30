@@ -23,17 +23,14 @@ const render = ({
 };
 
 export const Home = () => {
-  const { players, loading, error } = useFetchPlayers();
   // In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
+  const { players, loading, error } = useFetchPlayers();
+  // Not ideal to have two sources of truth, but this is a POC.
   const [filteredPlayers, setFilteredPlayers] = useState<string[]>(players);
 
   useEffect(() => {
     setFilteredPlayers(players);
   }, [players]);
-
-  if (loading) return <p>Loading...</p>;
-
-  if (error) return <p>Error: {error}</p>;
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
