@@ -1,9 +1,11 @@
 import { LinkComponent } from "../LinkComponent";
 
+import type { TPlayers } from "../../types";
+
 import "./index.css";
 
 interface PlayerListProps {
-  players: string[];
+  players: TPlayers;
 }
 
 export const PlayerList = ({ players }: PlayerListProps) => (

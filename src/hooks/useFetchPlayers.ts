@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import type { PlayersData } from "../types";
+import type { PlayersData, TPlayers } from "../types";
 
 const PLAYERS_URL = "https://api.chess.com/pub/titled/GM";
 
 export const useFetchPlayers = () => {
-  const [players, setPlayers] = useState<string[]>([]);
+  const [players, setPlayers] = useState<TPlayers>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

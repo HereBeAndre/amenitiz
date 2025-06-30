@@ -3,6 +3,8 @@ export interface PlayersData {
   players: string[];
 }
 
+export type TPlayers = PlayersData["players"];
+
 export interface PlayerProfileData {
   avatar: string;
   player_id: number;

@@ -1,32 +1,18 @@
 import { useEffect, useState } from "react";
 
 import { useFetchPlayers } from "../../hooks/useFetchPlayers";
-import { TextInput } from "../../shared/TextInput";
-import { PlayerList } from "../../shared/PlayerList";
+import { HomeHeader } from "./partials/HomeHeader";
+import { HomeContent } from "./partials/HomeContent";
+
+import type { TPlayers } from "../../types";
 
 import "./index.css";
-
-const render = ({
-  loading,
-  error,
-  players,
-}: {
-  loading: boolean;
-  error: string | null;
-  players: string[];
-}) => {
-  if (loading) return <p>Loading...</p>;
-
-  if (error) return <p>Error: {error}</p>;
-
-  return <PlayerList players={players}></PlayerList>;
-};
 
 export const Home = () => {
   // In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
   const { players, loading, error } = useFetchPlayers();
   // Not ideal to have two sources of truth, but this is a POC.
-  const [filteredPlayers, setFilteredPlayers] = useState<string[]>(players);
+  const [filteredPlayers, setFilteredPlayers] = useState<TPlayers>(players);
 
   useEffect(() => {
     setFilteredPlayers(players);
@@ -45,18 +31,8 @@ export const Home = () => {
 
   return (
     <div className="home-container">
-      <div className="home-header">
-        <h1>Chess Grandmasters</h1>
-        <TextInput
-          placeholder="Search player by username"
-          onChange={onInputChange}
-        />
-      </div>
-      {render({
-        loading,
-        error,
-        players: filteredPlayers,
-      })}
+      <HomeHeader onInputChange={onInputChange} />
+      <HomeContent players={filteredPlayers} loading={loading} error={error} />
     </div>
   );
 };
