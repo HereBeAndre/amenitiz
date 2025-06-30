@@ -1,8 +1,7 @@
 import { useFetchPlayer } from "../../hooks/useFetchPlayer";
 import { LinkComponent } from "../../shared/LinkComponent";
+import { ProfileAvatar } from "../../shared/ProfileAvatar";
 import { TimeSinceLastOnline } from "../../shared/TimeSinceLastOnline";
-
-import "./index.css";
 
 export const PlayerProfile = () => {
   const { profile, loading, error } = useFetchPlayer();
@@ -16,9 +15,7 @@ export const PlayerProfile = () => {
   return (
     <div className="container">
       <h1>{profile.name || profile.username}</h1>
-      {profile.avatar && (
-        <img src={profile.avatar} alt="avatar" className="avatar" />
-      )}
+      <ProfileAvatar avatar={profile.avatar} />
       <p>
         <strong>Username:</strong> {profile.username}
       </p>
