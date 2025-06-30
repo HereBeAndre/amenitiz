@@ -1,4 +1,5 @@
 export type TimeFormat = `${string}:${string}:${string}`;
+
 export interface PlayersData {
   players: string[];
 }
@@ -20,5 +21,5 @@ export interface PlayerProfileData {
   is_streamer: boolean;
   verified: boolean;
   league: string;
-  streaming_platforms: string[];
+  streaming_platforms: { type: string; channel_url: string }[];
 }

@@ -10,8 +10,8 @@ export const TimeSinceLastOnline = ({
   const sinceLastOnline = useLastOnline(lastOnline);
 
   return (
-    <p>
+    <>
       <strong>Time since last online:</strong> {sinceLastOnline}
-    </p>
+    </>
   );
 };
