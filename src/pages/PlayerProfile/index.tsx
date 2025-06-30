@@ -1,10 +1,11 @@
 import { useFetchPlayer } from "../../hooks/useFetchPlayer";
 import { LinkComponent } from "../../shared/LinkComponent";
+import { TimeSinceLastOnline } from "../../shared/TimeSinceLastOnline";
 
 import "./index.css";
 
 export const PlayerProfile = () => {
-  const { profile, loading, error, sinceLastOnline } = useFetchPlayer();
+  const { profile, loading, error } = useFetchPlayer();
 
   if (loading) return <p>Loading...</p>;
 
@@ -24,9 +25,7 @@ export const PlayerProfile = () => {
       <p>
         <strong>Status:</strong> {profile.status}
       </p>
-      <p>
-        <strong>Time since last online:</strong> {sinceLastOnline}
-      </p>
+      <TimeSinceLastOnline lastOnline={profile.last_online} />
       <LinkComponent to={`/`}>Back to Chess Grandmasters</LinkComponent>
     </div>
   );

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import type { PlayerProfileData } from "../types";
 import { useParams } from "react-router-dom";
-import { useLastOnline } from "./useLastOnline";
 
 const PLAYER_PROFILE_URL = "https://api.chess.com/pub/player";
 
@@ -41,9 +40,5 @@ export const useFetchPlayer = () => {
     fetchPlayer();
   }, [username]);
 
-  const sinceLastOnline = useLastOnline(profile?.last_online);
-
-  console.log("since last online => ", sinceLastOnline);
-
-  return { profile, loading, error, sinceLastOnline };
+  return { profile, loading, error };
 };
