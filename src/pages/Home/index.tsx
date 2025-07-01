@@ -7,9 +7,9 @@ import { HomeContent, HomeHeader } from './partials';
 import styles from './index.module.scss';
 
 export const Home = () => {
-  // In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
+  // TODO: In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
   const { data, isPending, error } = useFetchPlayers();
-  // Not ideal to have two sources of truth, but this is a POC.
+  // TODO: Not ideal to have two sources of truth, but this is a POC.
   const [filteredPlayers, setFilteredPlayers] = useState<TPlayers | undefined>(
     data?.players,
   );

@@ -1,6 +1,78 @@
-# React + TypeScript + Vite
+# Chess Grandmasters Wiki
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A wiki of Chess Grandmasters as defined by Chess.com.
+Users can fetch a list of Grandmasters, view their profiles, and see their details including their last online time.
+As a bonus, the app includes a search functionality to filter Grandmasters by username.
+
+📖 Documentation for chess.com's API can be found [here](https://www.chess.com/news/view/published-data-api#pubapi-endpoint-games-archive)
+
+## Table of Contents
+
+- [Chess Grandmasters Wiki](#chess-grandmasters-wiki)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Building](#building)
+  - [Running unit tests](#running-unit-tests)
+  - [React + TypeScript + Vite: Available Plugins](#react--typescript--vite-available-plugins)
+  - [Expanding the ESLint configuration](#expanding-the-eslint-configuration)
+  - [Screenshots](#screenshots)
+
+## Getting Started
+
+1. Clone the repository and navigate to the project directory.
+2. Ensure you have Node.js installed ( `vite@latest react-ts` template requires version >= 20).
+3. Run `npm install` to install the required dependencies.
+4. Run `ng run dev` to start the development server.
+5. Open your browser and navigate to `http://localhost:5173/` to view the application.
+
+## Building
+
+To build the application for production, use the following command:
+
+```bash
+npm run build
+```
+
+This will create a `build` directory with a production build of your app.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev) test runner, use the following command:
+
+```bash
+npm run test
+```
+
+✅ Improvements
+
+1. Added search bar to filter players
+2. Set a default avatar if a player doesn't have one
+3. Implemented navigation fallback for invalid URLs or errors during profile fetch
+4. Added Prettier and a plugin to sort imports
+5. Introduced react-query for better performance (e.g. caching) and developer experience
+
+🔧 Room for Improvements
+
+Left as TODOs in the codebase, these are some areas that could be improved for production readiness.
+
+- Technical
+
+[ ] Write more unit and integration tests
+[ ] Implement a virtualized list for the player list, or add pagination if supported server-side
+[ ] Consider using a more sophisticated state management solution if the app grows in complexity (e.g. Zustand)
+
+- UI/UX
+
+[ ] Enhance UI when the list is filtered and only a few results are shown
+[ ] Improve layout of the player list and profile, especially on smaller screens
+[ ] Make the player profile card more responsive
+[ ] Replace the "Loading..." text with skeleton loaders for smoother UX
+[ ] Make the entire <li> clickable instead of just the text inside it
+[ ] Improve error handling and display user-friendly messages when fetching data fails
+[ ] Improve accessibility features
+[ ] Improve overall styling — e.g. introduce design tokens or a design system for consistency
+
+## React + TypeScript + Vite: Available Plugins
 
 Currently, two official plugins are available:
 
@@ -13,9 +85,9 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default tseslint.config([
-  globalIgnores(["dist"]),
+  globalIgnores(['dist']),
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
     extends: [
       // Other configs...
 
@@ -30,7 +102,7 @@ export default tseslint.config([
     ],
     languageOptions: {
       parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
@@ -43,23 +115,23 @@ You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-re
 
 ```js
 // eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+import reactDom from 'eslint-plugin-react-dom';
+import reactX from 'eslint-plugin-react-x';
 
 export default tseslint.config([
-  globalIgnores(["dist"]),
+  globalIgnores(['dist']),
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
     extends: [
       // Other configs...
       // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
+      reactX.configs['recommended-typescript'],
       // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
@@ -68,31 +140,25 @@ export default tseslint.config([
 ]);
 ```
 
-# Amenitiz Front-end Technical Challange 🚀
+## Screenshots
 
-## Introduction
+<p align="center">
+  <img src="./src/assets/screenshots/4K_monitor.png" alt="4K Monitor" width="600"/><br/>
+  <em>4K Monitor</em>
+</p>
 
-The task is to create a wiki of Chess Grandmasters as defined by Chess.com. We are open to different layouts and styles.
+<p align="center">
+  <img src="./src/assets/screenshots/laptop.png" alt="Laptop" width="600"/><br/>
+  <em>Laptop</em>
+</p>
 
-### What we are looking for:
-
-- This exercise should be done in React with Typescript.
-- We do not expect production-ready code. However, we do expect the candidate to point out sub-optimal compromises taken to complete the task
-
-📖 Documentation for chess.com's API can be found here: https://www.chess.com/news/view/published-data-api#pubapi-endpoint-games-archive
-
-## ♟️ Step 1: List the Grandmasters
-
-Using the chess.com API, create a page that lists all the Grandmasters.
-
-API endpoint: https://api.chess.com/pub/titled/GM
-
-## ♟️ Step 2: Grandmaster profile page
-
-Extend the page that you created for the previous step so that if you click on a listed grandmaster, it should take you to a profile page displaying the information from the player endpoint.
-
-API endpoint for player: [https://api.chess.com/pub/player/{username}](https://api.chess.com/pub/player/john)
-
-## ♟️ Step 3: Add Grandmaster summary
-
-On the profile page for a grandmaster that you created in step 2, add a clock that displays the amount of time since they were last online. The time since the user was active should be displayed as HH:MM:SS, and it should update every second.
+<div>
+  <p align="center">
+    <img src="./src/assets/screenshots/tablet.png" alt="Tablet" width="300" />
+    <span>Tablet</span>
+  </p>
+  <p align="center">
+    <img src="./src/assets/screenshots/mobile.png" alt="Mobile" width="250"/>
+    <span>Mobile</span>
+  </p>
+</div>
