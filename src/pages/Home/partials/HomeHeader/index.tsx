@@ -1,6 +1,6 @@
-import { TextInput } from "../../../../shared/TextInput";
+import { TextInput } from '../../../../shared/TextInput';
 
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 interface HomeHeaderProps {
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

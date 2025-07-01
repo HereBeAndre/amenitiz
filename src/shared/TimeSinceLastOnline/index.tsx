@@ -1,4 +1,4 @@
-import { useLastOnline } from "../../hooks/useLastOnline";
+import { useLastOnline } from '../../hooks/useLastOnline';
 
 interface TimeSinceLastOnlineProps {
   lastOnline: number;

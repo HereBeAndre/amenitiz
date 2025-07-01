@@ -1,14 +1,15 @@
-import type { PlayerProfileData } from "../types";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
 
-const PLAYER_PROFILE_URL = "https://api.chess.com/pub/player";
+import type { PlayerProfileData } from '../types';
+
+const PLAYER_PROFILE_URL = 'https://api.chess.com/pub/player';
 
 export const useFetchPlayer = () => {
   const { username } = useParams<{ username: string }>();
 
   const { isPending, error, data } = useQuery<PlayerProfileData>({
-    queryKey: ["playerProfile", username],
+    queryKey: ['playerProfile', username],
     queryFn: async () => {
       const response = await fetch(`${PLAYER_PROFILE_URL}/${username}`);
       return await response.json();

@@ -1,7 +1,7 @@
-import { PlayerList } from "../../../../shared/PlayerList";
-import type { TPlayers } from "../../../../types";
+import { PlayerList } from '../../../../shared/PlayerList';
+import type { TPlayers } from '../../../../types';
 
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 interface HomeContentProps {
   players: TPlayers;
