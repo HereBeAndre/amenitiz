@@ -22,7 +22,7 @@ As a bonus, the app includes a search functionality to filter Grandmasters by us
 1. Clone the repository and navigate to the project directory.
 2. Ensure you have Node.js installed ( `vite@latest react-ts` template requires version >= 20).
 3. Run `npm install` to install the required dependencies.
-4. Run `ng run dev` to start the development server.
+4. Run `npm run dev` to start the development server.
 5. Open your browser and navigate to `http://localhost:5173/` to view the application.
 
 ## Building
@@ -57,20 +57,20 @@ Left as TODOs in the codebase, these are some areas that could be improved for p
 
 - Technical
 
-[ ] Write more unit and integration tests
-[ ] Implement a virtualized list for the player list, or add pagination if supported server-side
-[ ] Consider using a more sophisticated state management solution if the app grows in complexity (e.g. Zustand)
+- [ ] Write more unit and integration tests
+- [ ] Implement a virtualized list for the player list, or add pagination if supported server-side
+- [ ] Consider using a more sophisticated state management solution if the app grows in complexity (e.g. Zustand)
 
 - UI/UX
 
-[ ] Enhance UI when the list is filtered and only a few results are shown
-[ ] Improve layout of the player list and profile, especially on smaller screens
-[ ] Make the player profile card more responsive
-[ ] Replace the "Loading..." text with skeleton loaders for smoother UX
-[ ] Make the entire <li> clickable instead of just the text inside it
-[ ] Improve error handling and display user-friendly messages when fetching data fails
-[ ] Improve accessibility features
-[ ] Improve overall styling — e.g. introduce design tokens or a design system for consistency
+- [ ] Enhance UI when the list is filtered and only a few results are shown
+- [ ] Improve layout of the player list and profile, especially on smaller screens
+- [ ] Make the player profile card more responsive
+- [ ] Replace the "Loading..." text with skeleton loaders for smoother UX
+- [ ] Make the entire `<li>` clickable instead of just the text inside it
+- [ ] Improve error handling and display user-friendly messages when fetching data fails
+- [ ] Improve accessibility features
+- [ ] Improve overall styling — e.g. introduce design tokens or a design system for consistency
 
 ## React + TypeScript + Vite: Available Plugins
 
