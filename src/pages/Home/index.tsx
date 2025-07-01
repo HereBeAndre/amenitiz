@@ -10,20 +10,22 @@ import styles from "./index.module.scss";
 
 export const Home = () => {
   // In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
-  const { players, loading, error } = useFetchPlayers();
+  const { data, isPending, error } = useFetchPlayers();
   // Not ideal to have two sources of truth, but this is a POC.
-  const [filteredPlayers, setFilteredPlayers] = useState<TPlayers>(players);
+  const [filteredPlayers, setFilteredPlayers] = useState<TPlayers | undefined>(
+    data?.players
+  );
 
   useEffect(() => {
-    setFilteredPlayers(players);
-  }, [players]);
+    setFilteredPlayers(data?.players);
+  }, [data]);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     const query = e.target.value;
     setFilteredPlayers(
-      players.filter((username) =>
+      data?.players.filter((username) =>
         username.toLowerCase().includes(query.toLowerCase())
       )
     );
@@ -32,7 +34,11 @@ export const Home = () => {
   return (
     <div className={styles.homeContainer}>
       <HomeHeader onInputChange={onInputChange} />
-      <HomeContent players={filteredPlayers} loading={loading} error={error} />
+      <HomeContent
+        players={filteredPlayers || []}
+        loading={isPending}
+        error={error}
+      />
     </div>
   );
 };

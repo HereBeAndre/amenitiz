@@ -23,48 +23,48 @@ const renderStreamingPlatforms = (
 };
 
 export const PlayerProfile = () => {
-  const { profile, loading, error } = useFetchPlayer();
+  const { data, isPending, error } = useFetchPlayer();
 
-  if (loading) return <p>Loading...</p>;
+  if (isPending) return <p>Loading...</p>;
 
   // In a production application, you would handle this more gracefully, perhaps with a custom error page.
-  if (error || !profile) {
+  if (error || !data) {
     return <Navigate to="/" replace />;
   }
 
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileCard}>
-        <h1>{profile.name || profile.username}</h1>
-        <ProfileAvatar avatar={profile.avatar} />
-        <p className={styles.username}>@{profile.username}</p>
+        <h1>{data.name || data.username}</h1>
+        <ProfileAvatar avatar={data.avatar} />
+        <p className={styles.username}>@{data.username}</p>
 
         <ul className={styles.profileDetails}>
           <li>
-            <TimeSinceLastOnline lastOnline={profile.last_online} />
+            <TimeSinceLastOnline lastOnline={data.last_online} />
           </li>
           <li>
-            <strong>Status:</strong> {profile.status}
+            <strong>Status:</strong> {data.status}
           </li>
           <li>
-            <strong>Verified:</strong> {profile.verified ? "✅" : "❌"}
+            <strong>Verified:</strong> {data.verified ? "✅" : "❌"}
           </li>
           <li>
-            <strong>Streamer:</strong> {profile.is_streamer ? "Yes" : "No"}
+            <strong>Streamer:</strong> {data.is_streamer ? "Yes" : "No"}
           </li>
           <li>
-            <strong>League:</strong> {profile.league}
+            <strong>League:</strong> {data.league}
           </li>
           <li>
-            <strong>Followers:</strong> {profile.followers.toLocaleString()}
+            <strong>Followers:</strong> {data.followers.toLocaleString()}
           </li>
           <li>
             <strong>Joined:</strong>{" "}
-            {new Date(profile.joined * 1000).toLocaleDateString()}
+            {new Date(data.joined * 1000).toLocaleDateString()}
           </li>
           <li>
             <strong>Streaming Platforms:</strong>{" "}
-            {renderStreamingPlatforms(profile.streaming_platforms)}
+            {renderStreamingPlatforms(data.streaming_platforms)}
           </li>
         </ul>
 

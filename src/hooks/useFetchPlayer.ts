@@ -1,44 +1,24 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import type { PlayerProfileData } from "../types";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const PLAYER_PROFILE_URL = "https://api.chess.com/pub/player";
 
 export const useFetchPlayer = () => {
   const { username } = useParams<{ username: string }>();
 
-  const [profile, setProfile] = useState<PlayerProfileData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { isPending, error, data } = useQuery<PlayerProfileData>({
+    queryKey: ["playerProfile", username],
+    queryFn: async () => {
+      const response = await fetch(`${PLAYER_PROFILE_URL}/${username}`);
+      return await response.json();
+    },
+    // TODO: Check flags here
+    enabled: !!username,
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
 
-  useEffect(() => {
-    if (!username) {
-      setError("Username is required");
-      setLoading(false);
-      return;
-    }
-
-    const fetchPlayer = async () => {
-      try {
-        const response = await fetch(`${PLAYER_PROFILE_URL}/${username}`);
-        if (!response.ok) {
-          throw new Error("Player not found");
-        }
-        const data: PlayerProfileData = await response.json();
-        setProfile(data);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "An error occurred while fetching the player profile"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPlayer();
-  }, [username]);
-
-  return { profile, loading, error };
+  return { isPending, error, data };
 };

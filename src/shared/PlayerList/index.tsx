@@ -10,7 +10,7 @@ interface PlayerListProps {
 
 export const PlayerList = ({ players }: PlayerListProps) => (
   <ul className={styles.playerList}>
-    {players.map((username) => (
+    {players?.map((username) => (
       <li key={username} className={styles.playerListItem}>
         <LinkComponent to={`/player/${username}`}>{username}</LinkComponent>
       </li>
