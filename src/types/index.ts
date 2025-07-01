@@ -4,12 +4,12 @@ export interface PlayersData {
   players: string[];
 }
 
-export type TPlayers = PlayersData["players"];
+export type TPlayers = PlayersData['players'];
 
 export interface PlayerProfileData {
   avatar: string;
   player_id: number;
-  "@id": string;
+  '@id': string;
   url: string;
   name: string;
   username: string;

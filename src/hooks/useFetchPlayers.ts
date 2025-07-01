@@ -1,11 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import type { PlayersData } from "../types";
+import { useQuery } from '@tanstack/react-query';
 
-const PLAYERS_URL = "https://api.chess.com/pub/titled/GM";
+import type { PlayersData } from '../types';
+
+const PLAYERS_URL = 'https://api.chess.com/pub/titled/GM';
 
 export const useFetchPlayers = () => {
   const { isPending, error, data } = useQuery<PlayersData>({
-    queryKey: ["players"],
+    queryKey: ['players'],
     queryFn: async () => {
       const response = await fetch(PLAYERS_URL);
       return response.json();

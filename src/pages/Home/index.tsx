@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useFetchPlayers } from "../../hooks/useFetchPlayers";
-import { HomeHeader } from "./partials";
-import { HomeContent } from "./partials";
+import { useFetchPlayers } from '../../hooks/useFetchPlayers';
+import type { TPlayers } from '../../types';
+import { HomeContent, HomeHeader } from './partials';
 
-import type { TPlayers } from "../../types";
-
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 export const Home = () => {
   // In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
   const { data, isPending, error } = useFetchPlayers();
   // Not ideal to have two sources of truth, but this is a POC.
   const [filteredPlayers, setFilteredPlayers] = useState<TPlayers | undefined>(
-    data?.players
+    data?.players,
   );
 
   useEffect(() => {
@@ -26,8 +24,8 @@ export const Home = () => {
     const query = e.target.value;
     setFilteredPlayers(
       data?.players.filter((username) =>
-        username.toLowerCase().includes(query.trim().toLowerCase())
-      )
+        username.toLowerCase().includes(query.trim().toLowerCase()),
+      ),
     );
   };
 

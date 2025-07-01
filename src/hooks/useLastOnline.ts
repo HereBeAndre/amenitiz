@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { timeSinceLast } from "../utils/functions";
-import type { TimeFormat } from "../types";
+import { useEffect, useState } from 'react';
+
+import type { TimeFormat } from '../types';
+import { timeSinceLast } from '../utils/functions';
 
 export const useLastOnline = (lastOnline: number) => {
   const [sinceLastOnline, setSinceLastOnline] = useState<TimeFormat>(() =>
-    lastOnline ? timeSinceLast(lastOnline) : "00:00:00"
+    lastOnline ? timeSinceLast(lastOnline) : '00:00:00',
   );
 
   useEffect(() => {

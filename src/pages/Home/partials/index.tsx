@@ -1,4 +1,4 @@
-import { HomeContent } from "./HomeContent";
-import { HomeHeader } from "./HomeHeader";
+import { HomeContent } from './HomeContent';
+import { HomeHeader } from './HomeHeader';
 
 export { HomeContent, HomeHeader };

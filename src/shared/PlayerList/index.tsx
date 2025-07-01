@@ -1,8 +1,7 @@
-import { LinkComponent } from "../LinkComponent";
+import type { TPlayers } from '../../types';
+import { LinkComponent } from '../LinkComponent';
 
-import type { TPlayers } from "../../types";
-
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 interface PlayerListProps {
   players: TPlayers;

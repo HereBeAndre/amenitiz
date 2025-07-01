@@ -1,23 +1,24 @@
-import { Navigate } from "react-router-dom";
-import { useFetchPlayer } from "../../hooks/useFetchPlayer";
-import { LinkComponent } from "../../shared/LinkComponent";
-import { ProfileAvatar } from "../../shared/ProfileAvatar";
-import { TimeSinceLastOnline } from "../../shared/TimeSinceLastOnline";
-import type { PlayerProfileData } from "../../types";
+import { Navigate } from 'react-router-dom';
 
-import styles from "./index.module.scss";
+import { useFetchPlayer } from '../../hooks/useFetchPlayer';
+import { LinkComponent } from '../../shared/LinkComponent';
+import { ProfileAvatar } from '../../shared/ProfileAvatar';
+import { TimeSinceLastOnline } from '../../shared/TimeSinceLastOnline';
+import type { PlayerProfileData } from '../../types';
+
+import styles from './index.module.scss';
 
 const renderStreamingPlatforms = (
-  platforms: PlayerProfileData["streaming_platforms"]
+  platforms: PlayerProfileData['streaming_platforms'],
 ) => {
-  if (!platforms || platforms.length === 0) return "None";
+  if (!platforms || platforms.length === 0) return 'None';
 
   return platforms.map((platform, index) => (
     <span key={index}>
       <a href={platform.channel_url} target="_blank" rel="noopener noreferrer">
         {platform.type}
       </a>
-      {index < platforms.length - 1 ? ", " : ""}
+      {index < platforms.length - 1 ? ', ' : ''}
     </span>
   ));
 };
@@ -48,10 +49,10 @@ export const PlayerProfile = () => {
             <strong>Status:</strong> {data.status}
           </li>
           <li>
-            <strong>Verified:</strong> {data.verified ? "✅" : "❌"}
+            <strong>Verified:</strong> {data.verified ? '✅' : '❌'}
           </li>
           <li>
-            <strong>Streamer:</strong> {data.is_streamer ? "Yes" : "No"}
+            <strong>Streamer:</strong> {data.is_streamer ? 'Yes' : 'No'}
           </li>
           <li>
             <strong>League:</strong> {data.league}
@@ -60,11 +61,11 @@ export const PlayerProfile = () => {
             <strong>Followers:</strong> {data.followers.toLocaleString()}
           </li>
           <li>
-            <strong>Joined:</strong>{" "}
+            <strong>Joined:</strong>{' '}
             {new Date(data.joined * 1000).toLocaleDateString()}
           </li>
           <li>
-            <strong>Streaming Platforms:</strong>{" "}
+            <strong>Streaming Platforms:</strong>{' '}
             {renderStreamingPlatforms(data.streaming_platforms)}
           </li>
         </ul>

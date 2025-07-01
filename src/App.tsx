@@ -1,9 +1,9 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Home } from "./pages/Home";
-import { PlayerProfile } from "./pages/PlayerProfile";
+import { Home } from './pages/Home';
+import { PlayerProfile } from './pages/PlayerProfile';
 
-import "./App.css";
+import './App.css';
 
 const App = () => (
   <Routes>
