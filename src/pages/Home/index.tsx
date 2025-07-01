@@ -26,7 +26,7 @@ export const Home = () => {
     const query = e.target.value;
     setFilteredPlayers(
       data?.players.filter((username) =>
-        username.toLowerCase().includes(query.toLowerCase())
+        username.toLowerCase().includes(query.trim().toLowerCase())
       )
     );
   };

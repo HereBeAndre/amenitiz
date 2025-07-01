@@ -1,4 +1,4 @@
-input[type="text"].textInput {
+input[type="search"].textInput {
   background-color: #1e1e1e;
   color: #f1f1f1;
   border: 1px solid #444;
@@ -6,15 +6,15 @@ input[type="text"].textInput {
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
-  min-width: 15%;
+  min-width: 320px;
   box-sizing: border-box;
 }
 
-input[type="text"].textInput::placeholder {
+input[type="search"].textInput::placeholder {
   color: #888;
 }
 
-input[type="text"].textInput:focus {
+input[type="search"].textInput:focus {
   outline: none;
   border-color: #8884ff;
   box-shadow: 0 0 0 3px rgba(136, 132, 255, 0.2);

@@ -7,7 +7,7 @@ interface TextInputProps {
 
 export const TextInput = ({ placeholder, onChange }: TextInputProps) => (
   <input
-    type="text"
+    type="search"
     placeholder={placeholder}
     onChange={onChange}
     className={styles.textInput}
