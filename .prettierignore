@@ -1,0 +1,8 @@
+*.md
+*.mdx
+*.scss
+*.snap
+*.png
+*.svg
+.prettierignore
+.gitignore
