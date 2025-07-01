@@ -26,14 +26,16 @@ const renderStreamingPlatforms = (
 export const PlayerProfile = () => {
   const { data, isPending, error } = useFetchPlayer();
 
+  // TODO: Could be extracted to a ad-hoc loading component shared across the app
   if (isPending)
     return <div className={styles.loadingContainer}>Loading...</div>;
 
-  // In a production application, you would handle this more gracefully, perhaps with a toast or a custom error page.
+  // TODO: In a production application, you would handle this more gracefully, perhaps with a toast or a custom error page.
   if (error || !data) {
     return <Navigate to="/" replace />;
   }
 
+  // TODO: Should be split into smaller components
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileCard}>

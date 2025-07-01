@@ -11,7 +11,6 @@ export const useFetchPlayers = () => {
       const response = await fetch(PLAYERS_URL);
       return response.json();
     },
-    // TODO: Check flags here, too
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 5, // 5 minutes
   });

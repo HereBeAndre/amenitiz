@@ -14,10 +14,9 @@ export const useFetchPlayer = () => {
       const response = await fetch(`${PLAYER_PROFILE_URL}/${username}`);
       return await response.json();
     },
-    // TODO: Check flags here
     enabled: !!username,
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
   });
 
   return { isPending, error, data };
