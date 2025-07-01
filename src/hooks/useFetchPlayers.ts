@@ -1,35 +1,21 @@
-import { useEffect, useState } from "react";
-import type { PlayersData, TPlayers } from "../types";
+// import { useEffect, useState } from "react";
+// import type { PlayersData, TPlayers } from "../types";
+import { useQuery } from "@tanstack/react-query";
+import type { PlayersData } from "../types";
 
 const PLAYERS_URL = "https://api.chess.com/pub/titled/GM";
 
 export const useFetchPlayers = () => {
-  const [players, setPlayers] = useState<TPlayers>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { isPending, error, data } = useQuery<PlayersData>({
+    queryKey: ["players"],
+    queryFn: async () => {
+      const response = await fetch(PLAYERS_URL);
+      return response.json();
+    },
+    // TODO: Check flags here, too
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
 
-  useEffect(() => {
-    const fetchPlayers = async () => {
-      try {
-        const response = await fetch(PLAYERS_URL);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data: PlayersData = await response.json();
-        setPlayers(data.players);
-      } catch (error) {
-        setError(
-          error instanceof Error
-            ? error.message
-            : "An error occurred while fetching players"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPlayers();
-  }, []);
-
-  return { players, loading, error };
+  return { isPending, error, data };
 };
