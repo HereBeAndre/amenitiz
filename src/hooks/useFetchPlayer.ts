@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import type { PlayerProfileData } from "../types";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";

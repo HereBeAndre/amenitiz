@@ -1,5 +1,3 @@
-// import { useEffect, useState } from "react";
-// import type { PlayersData, TPlayers } from "../types";
 import { useQuery } from "@tanstack/react-query";
 import type { PlayersData } from "../types";
 
