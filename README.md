@@ -13,9 +13,9 @@ As a bonus, the app includes a search functionality to filter Grandmasters by us
   - [Getting Started](#getting-started)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
+  - [Screenshots](#screenshots)
   - [React + TypeScript + Vite: Available Plugins](#react--typescript--vite-available-plugins)
   - [Expanding the ESLint configuration](#expanding-the-eslint-configuration)
-  - [Screenshots](#screenshots)
 
 ## Getting Started
 
@@ -33,7 +33,7 @@ To build the application for production, use the following command:
 npm run build
 ```
 
-This will create a `build` directory with a production build of your app.
+This will create a `dist` directory in the project root containing the production-ready files.
 
 ## Running unit tests
 
@@ -71,6 +71,23 @@ Left as TODOs in the codebase, these are some areas that could be improved for p
 - [ ] Improve error handling and display user-friendly messages when fetching data fails
 - [ ] Improve accessibility features
 - [ ] Improve overall styling — e.g. introduce design tokens or a design system for consistency
+
+## Screenshots
+
+<p>
+  <img src="./public/chess_grandmasters_list.png" alt="List of Chess Grandmasters" width="600"/><br/>
+  <em>List of Chess Grandmasters</em>
+</p>
+
+<p>
+  <img src="./public/filter_chess_grandmasters.png" alt="Filtered List of Chess Grandmasters" width="600"/><br/>
+  <em>Filtered List of Chess Grandmasters</em>
+</p>
+
+<p>
+  <img src="./public/chess_grandmaster_profile.png" alt="Chess Grandmaster Profile" width="600"/><br/>
+  <em>Chess Grandmaster Profile</em>
+</p>
 
 ## React + TypeScript + Vite: Available Plugins
 
@@ -139,26 +156,3 @@ export default tseslint.config([
   },
 ]);
 ```
-
-## Screenshots
-
-<p align="center">
-  <img src="./src/assets/screenshots/4K_monitor.png" alt="4K Monitor" width="600"/><br/>
-  <em>4K Monitor</em>
-</p>
-
-<p align="center">
-  <img src="./src/assets/screenshots/laptop.png" alt="Laptop" width="600"/><br/>
-  <em>Laptop</em>
-</p>
-
-<div>
-  <p align="center">
-    <img src="./src/assets/screenshots/tablet.png" alt="Tablet" width="300" />
-    <span>Tablet</span>
-  </p>
-  <p align="center">
-    <img src="./src/assets/screenshots/mobile.png" alt="Mobile" width="250"/>
-    <span>Mobile</span>
-  </p>
-</div>
