@@ -5,7 +5,7 @@ import { ProfileAvatar } from "../../shared/ProfileAvatar";
 import { TimeSinceLastOnline } from "../../shared/TimeSinceLastOnline";
 import type { PlayerProfileData } from "../../types";
 
-import "./index.css";
+import styles from "./index.module.scss";
 
 const renderStreamingPlatforms = (
   platforms: PlayerProfileData["streaming_platforms"]
@@ -27,18 +27,19 @@ export const PlayerProfile = () => {
 
   if (loading) return <p>Loading...</p>;
 
+  // In a production application, you would handle this more gracefully, perhaps with a custom error page.
   if (error || !profile) {
     return <Navigate to="/" replace />;
   }
 
   return (
-    <div className="profile-container">
-      <div className="profile-card">
+    <div className={styles.profileContainer}>
+      <div className={styles.profileCard}>
         <h1>{profile.name || profile.username}</h1>
         <ProfileAvatar avatar={profile.avatar} />
-        <p className="username">@{profile.username}</p>
+        <p className={styles.username}>@{profile.username}</p>
 
-        <ul className="profile-details">
+        <ul className={styles.profileDetails}>
           <li>
             <TimeSinceLastOnline lastOnline={profile.last_online} />
           </li>

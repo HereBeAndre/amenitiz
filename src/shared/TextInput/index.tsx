@@ -1,4 +1,4 @@
-import "./index.css";
+import styles from "./index.module.scss";
 
 interface TextInputProps {
   placeholder: string;
@@ -10,6 +10,6 @@ export const TextInput = ({ placeholder, onChange }: TextInputProps) => (
     type="text"
     placeholder={placeholder}
     onChange={onChange}
-    className="text-input"
+    className={styles.textInput}
   />
 );

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { useFetchPlayers } from "../../hooks/useFetchPlayers";
-import { HomeHeader } from "./partials/HomeHeader";
-import { HomeContent } from "./partials/HomeContent";
+import { HomeHeader } from "./partials";
+import { HomeContent } from "./partials";
 
 import type { TPlayers } from "../../types";
 
-import "./index.css";
+import styles from "./index.module.scss";
 
 export const Home = () => {
   // In a production application, filtering should be performed on the server side (unless e.g. the dataset is small || filtering criteria is trivial).
@@ -30,7 +30,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className={styles.homeContainer}>
       <HomeHeader onInputChange={onInputChange} />
       <HomeContent players={filteredPlayers} loading={loading} error={error} />
     </div>
