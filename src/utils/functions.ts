@@ -1,4 +1,4 @@
-import type { TimeFormat } from '../types';
+import type { PlayerProfileData, TimeFormat } from '../types';
 
 export const timeSinceLast = (lastOnline: number): TimeFormat => {
   const nowInSeconds = Math.floor(Date.now() / 1000);
@@ -11,3 +11,8 @@ export const timeSinceLast = (lastOnline: number): TimeFormat => {
   // HH:mm:ss format
   return `${h}:${m}:${s}`;
 };
+
+export const isError = (
+  data: PlayerProfileData | undefined,
+): data is { code: number; message: string } =>
+  data !== undefined && 'code' in data && 'message' in data;

@@ -4,31 +4,10 @@ import { useFetchPlayer } from '../../hooks/useFetchPlayer';
 import { LinkComponent } from '../../shared/LinkComponent';
 import { ProfileAvatar } from '../../shared/ProfileAvatar';
 import { TimeSinceLastOnline } from '../../shared/TimeSinceLastOnline';
-import type { PlayerProfileData } from '../../types';
+import { isError } from '../../utils/functions';
+import { PlayerStreamingPlatforms } from './partials/PlayerStreamingPlatforms';
 
 import styles from './index.module.scss';
-
-const isError = (
-  data: PlayerProfileData | undefined,
-): data is { code: number; message: string } =>
-  data !== undefined && 'code' in data && 'message' in data;
-
-const renderStreamingPlatforms = (player: PlayerProfileData) => {
-  if (isError(player)) return;
-
-  const platforms = player.streaming_platforms;
-
-  if (!platforms || platforms.length === 0) return 'None';
-
-  return platforms.map((platform, index) => (
-    <span key={index}>
-      <a href={platform.channel_url} target="_blank" rel="noopener noreferrer">
-        {platform.type}
-      </a>
-      {index < platforms.length - 1 ? ', ' : ''}
-    </span>
-  ));
-};
 
 export const PlayerProfile = () => {
   const { data, isPending, error } = useFetchPlayer();
@@ -42,7 +21,8 @@ export const PlayerProfile = () => {
     return <Navigate to="/" replace />;
   }
 
-  // TODO: Should be split into smaller components
+  // TODO: Should be split into smaller components.
+  // <strong> should be replaced with util class for consistency and reusability.
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileCard}>
@@ -64,7 +44,7 @@ export const PlayerProfile = () => {
             <strong>Streamer:</strong> {data.is_streamer ? 'Yes' : 'No'}
           </li>
           <li>
-            <strong>League:</strong> {data.league}
+            <strong>League:</strong> {data.league || 'N/A'}
           </li>
           <li>
             <strong>Followers:</strong> {data.followers.toLocaleString()}
@@ -75,7 +55,7 @@ export const PlayerProfile = () => {
           </li>
           <li>
             <strong>Streaming Platforms:</strong>{' '}
-            {renderStreamingPlatforms(data)}
+            <PlayerStreamingPlatforms player={data} />
           </li>
         </ul>
 

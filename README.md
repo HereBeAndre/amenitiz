@@ -13,6 +13,8 @@ As a bonus, the app includes a search functionality to filter Grandmasters by us
   - [Getting Started](#getting-started)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
+  - [✅ Improvements](#-improvements)
+  - [🔧 Room for Improvements](#-room-for-improvements)
   - [Screenshots](#screenshots)
   - [React + TypeScript + Vite: Available Plugins](#react--typescript--vite-available-plugins)
   - [Expanding the ESLint configuration](#expanding-the-eslint-configuration)
@@ -43,21 +45,22 @@ To execute unit tests with the [Vitest](https://vitest.dev) test runner, use the
 npm run test
 ```
 
-✅ Improvements
+## ✅ Improvements
 
 1. Added search bar to filter players
 2. Set a default avatar if a player doesn't have one
 3. Implemented navigation fallback for invalid URLs or errors during profile fetch
 4. Added Prettier and a plugin to sort imports
 5. Introduced react-query for better performance (e.g. caching) and developer experience
+6. Write basic unit tests
 
-🔧 Room for Improvements
+## 🔧 Room for Improvements
 
 Left as TODOs in the codebase, these are some areas that could be improved for production readiness.
 
 - Technical
 
-- [ ] Write more unit and integration tests
+- [ ] Add more unit tests to cover edge cases
 - [ ] Implement a virtualized list for the player list, or add pagination if supported server-side
 - [ ] Consider using a more sophisticated state management solution if the app grows in complexity (e.g. Zustand)
 

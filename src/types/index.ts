@@ -21,7 +21,7 @@ export type PlayerProfileData =
       status: string;
       is_streamer: boolean;
       verified: boolean;
-      league: string;
+      league: string | undefined;
       streaming_platforms: { type: string; channel_url: string }[];
     }
   | { code: number; message: string };
