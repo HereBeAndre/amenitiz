@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useFetchPlayers } from '../../hooks/useFetchPlayers';
 import type { TPlayers } from '../../types';
@@ -18,16 +18,19 @@ export const Home = () => {
     setFilteredPlayers(data?.players);
   }, [data]);
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const onInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
 
-    const query = e.target.value;
-    setFilteredPlayers(
-      data?.players.filter((username) =>
-        username.toLowerCase().includes(query.trim().toLowerCase()),
-      ),
-    );
-  };
+      const query = e.target.value;
+      setFilteredPlayers(
+        data?.players.filter((username) =>
+          username.toLowerCase().includes(query.trim().toLowerCase()),
+        ),
+      );
+    },
+    [data?.players],
+  );
 
   return (
     <div className={styles.homeContainer}>

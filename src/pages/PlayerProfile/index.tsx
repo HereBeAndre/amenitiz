@@ -8,9 +8,16 @@ import type { PlayerProfileData } from '../../types';
 
 import styles from './index.module.scss';
 
-const renderStreamingPlatforms = (
-  platforms: PlayerProfileData['streaming_platforms'],
-) => {
+const isError = (
+  data: PlayerProfileData | undefined,
+): data is { code: number; message: string } =>
+  data !== undefined && 'code' in data && 'message' in data;
+
+const renderStreamingPlatforms = (player: PlayerProfileData) => {
+  if (isError(player)) return;
+
+  const platforms = player.streaming_platforms;
+
   if (!platforms || platforms.length === 0) return 'None';
 
   return platforms.map((platform, index) => (
@@ -31,7 +38,7 @@ export const PlayerProfile = () => {
     return <div className={styles.loadingContainer}>Loading...</div>;
 
   // TODO: In a production application, you would handle this more gracefully, perhaps with a toast or a custom error page.
-  if (error || !data) {
+  if (error || isError(data) || !data) {
     return <Navigate to="/" replace />;
   }
 
@@ -68,7 +75,7 @@ export const PlayerProfile = () => {
           </li>
           <li>
             <strong>Streaming Platforms:</strong>{' '}
-            {renderStreamingPlatforms(data.streaming_platforms)}
+            {renderStreamingPlatforms(data)}
           </li>
         </ul>
 
